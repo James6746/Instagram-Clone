@@ -2,6 +2,8 @@ package com.example.instagramclone.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Environment
+import android.os.StatFs
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.instagramclone.R
 import com.example.instagramclone.adapter.HomeAdapter
 import com.example.instagramclone.model.Post
+import com.example.instagramclone.utils.Extensions.toast
 import com.example.instagramclone.utils.Logger
+import java.io.FileOutputStream
+
 
 class HomeFragment : BaseFragment() {
     val TAG = HomeFragment::class.java.simpleName
@@ -26,6 +31,8 @@ class HomeFragment : BaseFragment() {
         initViews(view)
         return view
     }
+
+
 
     private fun initViews(view: View) {
         recyclerView = view.findViewById(R.id.recyclerView)

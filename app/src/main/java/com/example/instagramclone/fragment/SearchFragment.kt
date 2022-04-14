@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagramclone.R
 import com.example.instagramclone.adapter.SearchAdapter
+import com.example.instagramclone.managers.DatabaseManager
+import com.example.instagramclone.managers.handler.DBUsersHandler
 import com.example.instagramclone.model.User
 
 /*
@@ -77,23 +79,18 @@ class SearchFragment : Fragment() {
         refreshAdapter(users)
     }
 
-    private fun loadUsers(): ArrayList<User> {
-        items = ArrayList()
-        items.add(User("xurshid", "shamsun.com@gmail.com"))
-        items.add(User("begzod", "shamsun.com@gmail.com"))
-        items.add(User("sherzod", "shamsun.com@gmail.com"))
-        items.add(User("firdavs", "shamsun.com@gmail.com"))
-        items.add(User("jamshid", "shamsun.com@gmail.com"))
-        items.add(User("muxtor", "shamsun.com@gmail.com"))
-        items.add(User("yahyo", "shamsun.com@gmail.com"))
-        items.add(User("ali", "shamsun.com@gmail.com"))
-        items.add(User("mansur", "shamsun.com@gmail.com"))
-        items.add(User("jabbor", "shamsun.com@gmail.com"))
-        items.add(User("samandar", "shamsun.com@gmail.com"))
-        items.add(User("mirzohid", "shamsun.com@gmail.com"))
-        items.add(User("nurmuhammad", "shamsun.com@gmail.com"))
+    private fun loadUsers() {
+        DatabaseManager.loadUsers(object : DBUsersHandler{
+            override fun onSuccess(users: ArrayList<User>) {
+                items.clear()
+                items.addAll(users)
+                refreshAdapter(items)
+            }
 
-        return items
+            override fun onError(e: Exception) {
+            }
+
+        })
     }
 
 }

@@ -31,7 +31,7 @@
                 android:textSize="17sp" />
 
             <ImageView
-                android:id="@+id/iv_camera"
+                android:id="@+id/iv_logout"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -65,6 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="2dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/img"
                     app:shapeAppearance="@style/circle"
                     app:strokeColor="@color/app_color_2"
